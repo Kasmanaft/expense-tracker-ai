@@ -24,3 +24,14 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Electron-specific styles */
+.electron-drag-region {
+  -webkit-app-region: drag;
+  /* This makes the area draggable for window movement */
+}
+
+/* Ensure that the content is properly offset in Electron */
+.electron-content-offset {
+  padding-top: 32px; /* Same as the height of the drag region */
+}
