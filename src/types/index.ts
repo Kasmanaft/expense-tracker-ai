@@ -49,6 +49,30 @@ export interface MonthlyData {
   amount: number;
 }
 
+// Advanced Export Types
+export type ExportFormat = 'csv' | 'json' | 'pdf';
+
+export interface ExportOptions {
+  format: ExportFormat;
+  filename: string;
+  dateRange: {
+    startDate: Date | null;
+    endDate: Date | null;
+  };
+  categories: ExpenseCategory[] | null; // null means all categories
+  includeMetadata: boolean;
+}
+
+export interface ExportSummary {
+  recordCount: number;
+  totalAmount: number;
+  dateRange: {
+    startDate: Date | null;
+    endDate: Date | null;
+  };
+  categoryBreakdown: Record<ExpenseCategory, number>;
+}
+
 export const EXPENSE_CATEGORIES: ExpenseCategory[] = [
   'Food',
   'Transportation',
