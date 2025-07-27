@@ -12,7 +12,7 @@ out/
 
 # Electron
 dist/
-app/
+/app/
 build/
 packages/
 
@@ -118,7 +118,6 @@ public
 .vscode-test
 
 # Electron
-app/
 packages/
 release/
 
