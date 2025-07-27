@@ -26,11 +26,17 @@ body {
 }
 
 /* Electron-specific styles */
-html.electron-app {
-  /* Ensure content doesn't overlap with window controls */
+html.electron-app nav {
   -webkit-app-region: drag;
+  padding-top: 28px; /* Space for window controls */
 }
 
+.electron-nav {
+  padding-top: 28px; /* Space for window controls */
+}
+
+html.electron-app nav a,
+html.electron-app nav button,
 html.electron-app button,
 html.electron-app a,
 html.electron-app input,

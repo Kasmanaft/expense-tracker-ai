@@ -11,7 +11,7 @@ import {
   Bars3Icon,
   XMarkIcon
 } from '@heroicons/react/24/outline';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const navigation = [
   { name: 'Dashboard', href: '/', icon: HomeIcon },
@@ -23,9 +23,16 @@ const navigation = [
 export function Navigation() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isElectron, setIsElectron] = useState(false);
+
+  useEffect(() => {
+    // Check for Electron environment
+    const userAgent = window.navigator.userAgent.toLowerCase();
+    setIsElectron(userAgent.indexOf(' electron/') > -1);
+  }, []);
 
   return (
-    <nav className="bg-white shadow-sm border-b border-gray-200">
+    <nav className={`bg-white shadow-sm border-b border-gray-200 ${isElectron ? 'electron-nav' : ''}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex">
