@@ -24,3 +24,17 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Electron-specific styles */
+html.electron-app {
+  /* Ensure content doesn't overlap with window controls */
+  -webkit-app-region: drag;
+}
+
+html.electron-app button,
+html.electron-app a,
+html.electron-app input,
+html.electron-app select,
+html.electron-app [role="button"] {
+  -webkit-app-region: no-drag;
+}
