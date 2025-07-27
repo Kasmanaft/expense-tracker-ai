@@ -72,6 +72,6 @@ export const CATEGORY_ICONS: Record<ExpenseCategory, string> = {
   Transportation: '🚗',
   Entertainment: '🎬',
   Shopping: '🛍️',
-  Bills: '��',
+  Bills: '📄',
   Other: '📝'
 };
