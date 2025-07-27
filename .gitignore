@@ -118,7 +118,6 @@ public
 .vscode-test
 
 # Electron
-app/
 packages/
 release/
 
