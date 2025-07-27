@@ -1,25 +1,33 @@
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import './globals.css'
-import { Navigation } from '@/components/layout/Navigation'
-import { DevHelper } from '@/components/DevHelper'
+'use client';
 
-const inter = Inter({ subsets: ['latin'] })
+import { useEffect, useState } from 'react';
+import { Inter } from 'next/font/google';
+import './globals.css';
+import { Navigation } from '@/components/layout/Navigation';
+import { DevHelper } from '@/components/DevHelper';
 
-export const metadata: Metadata = {
-  title: 'Expense Tracker',
-  description: 'A modern expense tracking application to manage your personal finances',
-}
+const inter = Inter({ subsets: ['latin'] });
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  // Check if running in Electron
+  const [isElectron, setIsElectron] = useState(false);
+
+  useEffect(() => {
+    // Check for Electron environment
+    const userAgent = window.navigator.userAgent.toLowerCase();
+    setIsElectron(userAgent.indexOf(' electron/') > -1);
+  }, []);
+
   return (
     <html lang="en">
       <body className={inter.className}>
         <div className="min-h-screen bg-gray-50">
+          {/* Add extra padding at the top when running in Electron */}
+          {isElectron && <div className="h-8 bg-gray-50" />}
           <Navigation />
           <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             {children}
@@ -28,5 +36,5 @@ export default function RootLayout({
         </div>
       </body>
     </html>
-  )
+  );
 }
