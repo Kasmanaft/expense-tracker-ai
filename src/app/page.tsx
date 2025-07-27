@@ -7,6 +7,7 @@ import { DashboardStats } from '@/types';
 import { DashboardOverview } from '@/components/dashboard/DashboardOverview';
 import { RecentExpenses } from '@/components/dashboard/RecentExpenses';
 import { CategoryBreakdown } from '@/components/dashboard/CategoryBreakdown';
+import { AdvancedExportButton } from '@/components/export/AdvancedExportButton';
 
 export default function Dashboard() {
   const [stats, setStats] = useState<DashboardStats | null>(null);
@@ -51,11 +52,16 @@ export default function Dashboard() {
 
   return (
     <div className="space-y-8">
-      <div>
-        <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
-        <p className="text-gray-600 mt-2">
-          Overview of your expenses and spending patterns
-        </p>
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
+          <p className="text-gray-600 mt-2">
+            Overview of your expenses and spending patterns
+          </p>
+        </div>
+        <div className="mt-4 sm:mt-0">
+          <AdvancedExportButton />
+        </div>
       </div>
 
       <DashboardOverview stats={stats} />
